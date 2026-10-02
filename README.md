@@ -1,58 +1,193 @@
-[README.md](https://github.com/user-attachments/files/32943679/README.md)
-# Dock AutoHide
+# Better Dock Auto Hide
 
-macOS에서 Dock이 있는 화면의 창을 보고 Dock 자동 숨김을 켜고 끄는 메뉴 막대 앱입니다.
-시스템 Dock의 자동 숨김을 바꿉니다.
+[English](#english) · [日本語](#日本語) · [한국어](#한국어)
 
-## 동작
+<a name="english"></a>
 
-- Dock이 있는 화면의 창 중 하나라도 Dock 경계에 닿아 있으면 Dock을 숨깁니다.
-- 그 화면의 창이 모두 경계에서 벗어나면, 앱을 켜기 전의 자동 숨김 설정으로 되돌립니다.
-- 다른 모니터에서 작업 중이면 Dock 상태를 바꾸지 않습니다.
-- 종료하면 원래 자동 숨김 설정으로 복원합니다.
+## English
 
-제목 표시줄을 더블 클릭해 키운 창은 Dock이 숨겨진 뒤 그 빈 자리까지 늘립니다. 메뉴에서 끌 수 있습니다.
+A lightweight **macOS menu bar utility** that automatically hides and shows the **macOS Dock** based on window position.
 
-## Dock 아이콘
+Better Dock Auto Hide monitors windows near the Dock edge and automatically changes the system Dock's auto-hide state. It supports **multi-monitor setups**, configurable edge detection, Dock reveal delay, and optional window expansion into the Dock area.
 
-아이콘에는 현재 기온과 날씨 표시만 번갈아 나옵니다.
+**Requires macOS 13.0 or later.**
 
-- 기온
-- 시간·날씨에 따른 아이콘: 해, 달, 비, 구름
+### Features
 
-기본 순환 간격은 15초입니다. 위치 권한이 없으면 마지막 위치나 대략적인 네트워크 위치로 날씨를 가져옵니다.
+* Automatic Dock auto-hide based on window position
+* Multi-monitor support
+* Configurable edge threshold
+* Configurable Dock reveal delay
+* Optional window expansion into the Dock area
+* macOS menu bar app
+* Optional temperature and weather display
+* Restores the original Dock auto-hide setting when the app exits
 
-## 메뉴
+### How It Works
 
-메뉴 막대 아이콘에서 엽니다.
+* When a window on a screen reaches the configured Dock edge threshold, the Dock is automatically hidden.
+* When all windows on that screen move away from the edge, the Dock returns to the auto-hide state that was active before the app started.
+* Working with windows on another monitor does not unnecessarily change the Dock state.
+* When the app quits, the original Dock auto-hide setting is restored.
 
+When a window expanded by double-clicking its title bar is being used, the window can optionally expand into the space occupied by the hidden Dock.
 
-| 항목                        | 설명                                         |
-| ------------------------- | ------------------------------------------ |
-| 자동 모드 (창 경계 감지)           | 창 위치에 따라 자동 숨김을 바꿉니다.                      |
-| Dock 자동 숨김                | 직접 켜고 끕니다. 켜면 자동 모드는 잠시 멈춥니다.              |
-| 전체 화면 위 다른 창 사용 시 Dock 표시 | 전체화면·확대 창 위의 작은 창을 쓸 때 Dock을 다시 보이게 합니다.   |
-| 확대한 창을 Dock 자리까지 늘리기      | 더블 클릭으로 키운 창을 Dock 자리까지 채웁니다.              |
-| Dock 표시 지연                | 숨은 Dock이 나타나기까지 마우스를 두는 시간입니다.             |
-| 경계 임계값                    | 창이 경계에 닿았다고 볼 거리입니다. 16 / 24 / 32 / 48 px. |
-| Dock 아이콘                  | 아이콘 표시 여부와 순환 간격(5 / 10 / 15 / 30 / 60초).  |
+### Dock Icon
 
+The menu bar icon can optionally display the current temperature and a weather icon.
 
-Dock 표시 지연은 macOS 설정입니다. 바꿀 때 Dock이 한 번 재시작되고, 앱을 종료해도 그 값은 남습니다.
+Supported information includes:
+
+* Temperature
+* Weather/time-based icons such as sun, moon, rain, and clouds
+* Configurable rotation interval: 5 / 10 / 15 / 30 / 60 seconds
+
+If location permission is unavailable, the app can use the last known location or an approximate network location for weather information.
+
+### Menu Bar Settings
+
+| Setting                                | Description                                                                                        |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Automatic Mode (Window Edge Detection) | Automatically changes Dock auto-hide based on window position.                                     |
+| Dock Auto Hide                         | Manually enables or disables Dock auto-hide. Automatic Mode pauses while this is enabled.          |
+| Show Dock for Windows Over Full Screen | Shows the Dock when working with smaller windows over a full-screen or expanded window.            |
+| Expand Windows into Dock Area          | Expands double-click-maximized windows into the Dock area.                                         |
+| Dock Reveal Delay                      | Controls how long the pointer must remain at the edge before the hidden Dock appears.              |
+| Edge Threshold                         | Sets the distance used to detect whether a window has reached the Dock edge: 16 / 24 / 32 / 48 px. |
+| Dock Icon                              | Enables the icon and configures its rotation interval.                                             |
+
+### Permissions
+
+| Permission                 | When it is used                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------- |
+| Accessibility              | Requested only when window expansion is enabled and permission is required.                        |
+| Automation (System Events) | Requested by macOS when the app changes Dock auto-hide.                                            |
+| Location                   | Requested when no location has previously been determined; used for temperature and weather icons. |
+
+### Limitations
+
+* macOS full-screen mode entered with the green window button is handled by the system.
+* Moving the mouse to the edge of another monitor can cause macOS to move the Dock to that monitor.
+* Some applications may prevent their windows from being resized while maximized.
+
+[⬆ Back to language selection](#better-dock-auto-hide)
+
+---
+
+<a name="日本語"></a>
+
+# 日本語
+
+[English](#english) · [日本語](#日本語) · [한국어](#한국어)
+
+**Better Dock Auto Hide** は、ウインドウの位置に応じて **macOS の Dock を自動的に表示・非表示にするメニューバーアプリ**です。
+
+Dock の端付近にあるウインドウを監視し、ウインドウの位置に応じて macOS の Dock の自動表示／非表示を切り替えます。
+
+**macOS 13.0 以降に対応しています。**
+
+## 主な機能
+
+* ウインドウの位置に応じた Dock の自動非表示
+* マルチモニター対応
+* Dock 端部の検出距離を設定可能
+* Dock 表示までの遅延時間を設定可能
+* ウインドウを Dock の領域まで拡張するオプション
+* macOS メニューバーアプリ
+* 温度・天気情報の表示
+* アプリ終了時に元の Dock 自動非表示設定を復元
+
+## 動作の仕組み
+
+* Dock のある画面でウインドウが設定した検出距離まで Dock 側の端に近づくと、Dock を自動的に非表示にします。
+* その画面にあるすべてのウインドウが端から離れると、アプリ起動前の Dock 自動非表示状態に戻します。
+* 別のモニターでウインドウを操作しても、必要以上に Dock の状態を変更しません。
+* アプリを終了すると、起動前の Dock 自動非表示設定が復元されます。
+
+## メニューバー設定
+
+| 設定                                     | 説明                                            |
+| -------------------------------------- | --------------------------------------------- |
+| Automatic Mode (Window Edge Detection) | ウインドウの位置に応じて Dock の自動非表示を切り替えます。              |
+| Dock Auto Hide                         | Dock の自動非表示を手動で有効／無効にします。                     |
+| Show Dock for Windows Over Full Screen | フルスクリーンまたは拡大されたウインドウの上で Dock を表示します。          |
+| Expand Windows into Dock Area          | ウインドウを Dock の領域まで拡張します。                       |
+| Dock Reveal Delay                      | Dock が表示されるまでの時間を設定します。                       |
+| Edge Threshold                         | Dock の端を検出する距離を 16 / 24 / 32 / 48 px から設定します。 |
+| Dock Icon                              | Dock アイコンと更新間隔を設定します。                         |
+
+## 権限
+
+| 権限                         | 使用目的                     |
+| -------------------------- | ------------------------ |
+| Accessibility              | ウインドウ拡張機能に使用します。         |
+| Automation (System Events) | Dock の自動非表示を変更する際に使用します。 |
+| Location                   | 温度・天気情報の取得に使用します。        |
+
+## 制限事項
+
+* macOS のフルスクリーンモードはシステムによって管理されます。
+* 別のモニターの画面端へマウスを移動すると Dock がそのモニターへ移動する場合があります。
+* 一部のアプリケーションでは最大化されたウインドウのサイズ変更が制限される場合があります。
+
+[⬆ 言語選択に戻る](#better-dock-auto-hide)
+
+---
+
+<a name="한국어"></a>
+
+# 한국어
+
+[English](#english) · [日本語](#日本語) · [한국어](#한국어)
+
+**Better Dock Auto Hide**는 창의 위치를 감지하여 **macOS Dock을 자동으로 숨기거나 표시하는 메뉴 막대 앱**입니다.
+
+Dock 가장자리 근처의 창을 감지하여 창의 위치에 따라 macOS의 Dock 자동 숨김 상태를 자동으로 변경합니다.
+
+**macOS 13.0 이상을 지원합니다.**
+
+## 주요 기능
+
+* 창 위치에 따른 Dock 자동 숨김
+* 다중 모니터 지원
+* Dock 가장자리 감지 거리 설정
+* Dock 표시 지연 시간 설정
+* 창을 숨겨진 Dock 영역까지 확장
+* macOS 메뉴 막대 앱
+* 온도 및 날씨 표시
+* 앱 종료 시 기존 Dock 자동 숨김 설정 복원
+
+## 작동 방식
+
+* Dock이 있는 화면에서 창이 설정한 감지 거리만큼 Dock 쪽 가장자리에 가까워지면 Dock을 자동으로 숨깁니다.
+* 해당 화면의 모든 창이 가장자리에서 멀어지면 앱 실행 전에 사용하던 Dock 자동 숨김 상태로 돌아갑니다.
+* 다른 모니터의 창을 사용하더라도 필요 이상으로 Dock 상태를 변경하지 않습니다.
+* 앱을 종료하면 앱 실행 전의 Dock 자동 숨김 설정을 복원합니다.
+
+## 메뉴 막대 설정
+
+| 설정                                     | 설명                                            |
+| -------------------------------------- | --------------------------------------------- |
+| Automatic Mode (Window Edge Detection) | 창 위치에 따라 Dock 자동 숨김을 자동으로 변경합니다.              |
+| Dock Auto Hide                         | Dock 자동 숨김을 수동으로 켜거나 끕니다.                     |
+| Show Dock for Windows Over Full Screen | 전체 화면 또는 확장된 창 위에서 Dock을 표시합니다.               |
+| Expand Windows into Dock Area          | 창을 Dock 영역까지 확장합니다.                           |
+| Dock Reveal Delay                      | Dock이 나타날 때까지의 지연 시간을 설정합니다.                  |
+| Edge Threshold                         | Dock 가장자리 감지 거리를 16 / 24 / 32 / 48 px로 설정합니다. |
+| Dock Icon                              | Dock 아이콘과 갱신 주기를 설정합니다.                       |
 
 ## 권한
 
+| 권한                  | 사용 목적                       |
+| ------------------- | --------------------------- |
+| 접근성 (Accessibility) | 창 확장 기능에 사용합니다.             |
+| 자동화 (System Events) | Dock 자동 숨김 상태를 변경할 때 사용합니다. |
+| 위치                  | 온도 및 날씨 정보에 사용합니다.          |
 
-| 권한                  | 언제                                            |
-| ------------------- | --------------------------------------------- |
-| 손쉬운 사용              | 창 늘리기를 켰는데 권한이 없을 때만 요청합니다. 앱을 열 때마다 묻지 않습니다. |
-| 자동화 (System Events) | Dock 자동 숨김을 실제로 바꿀 때 macOS가 요청합니다.            |
-| 위치                  | 아직 결정된 적이 없을 때만 한 번 요청합니다. 기온과 날씨 아이콘에 씁니다.   |
+## 제한 사항
 
+* macOS 전체 화면 모드는 시스템에서 관리합니다.
+* 다른 모니터의 화면 가장자리로 마우스를 이동하면 Dock이 해당 모니터로 이동할 수 있습니다.
+* 일부 앱에서는 최대화된 창의 크기 변경이 제한될 수 있습니다.
 
-## 제한
-
-- 녹색 버튼으로 들어간 macOS 전체화면은 시스템이 Dock을 숨깁니다. 「전체 화면 위 다른 창」 설정은 더블 클릭으로 키운 창에 적용됩니다.
-- 다른 모니터 가장자리에 마우스를 오래 두면 Dock이 그 모니터로 옮겨 가는 것은 macOS 동작입니다.
-- 일부 앱은 최대화 상태에서 창 크기 변경을 거부할 수 있습니다.
-
+[⬆ 언어 선택으로 돌아가기](#better-dock-auto-hide)
