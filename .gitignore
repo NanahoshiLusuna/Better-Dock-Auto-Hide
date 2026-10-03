@@ -1,6 +1,8 @@
-main/
-main/
+# Swift Package Manager
 .build/
-build/
 .swiftpm/
+DerivedData/
+*.xcuserstate
+
+# macOS
 .DS_Store
