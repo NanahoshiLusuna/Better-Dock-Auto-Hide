@@ -1,6 +1,78 @@
 # Better Dock Auto Hide
 
+[한국어](#한국어) · [English](#english) · [日本語](#日本語)
+
+<a name="한국어"></a>
+
+# 한국어
+
 [English](#english) · [日本語](#日本語) · [한국어](#한국어)
+
+**Better Dock Auto Hide**는 창의 위치를 감지하여 **macOS Dock을 자동으로 숨기거나 표시하는 가벼운 Swift 메뉴 막대 앱**입니다.
+
+Dock 가장자리 근처의 창을 감지하여 창의 위치에 따라 macOS의 Dock 자동 숨김 상태를 자동으로 변경합니다.
+
+**macOS 13.0 이상을 지원합니다.**
+
+## 주요 기능
+
+* 창 위치에 따른 Dock 자동 숨김
+* 다중 모니터 지원
+* Dock 가장자리 감지 거리 설정
+* Dock 표시 지연 시간 설정
+* 창을 숨겨진 Dock 영역까지 확장
+* macOS 메뉴 막대 앱
+* 온도 및 날씨 표시
+* 앱 종료 시 기존 Dock 자동 숨김 설정 복원
+
+## 빌드
+
+macOS에서 Swift Package Manager로 빌드할 수 있습니다.
+
+```sh
+swift build -c release
+```
+
+## 작동 방식
+
+* Dock이 있는 화면에서 창이 설정한 감지 거리만큼 Dock 쪽 가장자리에 가까워지면 Dock을 자동으로 숨깁니다.
+* 해당 화면의 모든 창이 가장자리에서 멀어지면 앱 실행 전에 사용하던 Dock 자동 숨김 상태로 돌아갑니다.
+* 다른 모니터의 창을 사용하더라도 필요 이상으로 Dock 상태를 변경하지 않습니다.
+* 앱을 종료하면 앱 실행 전의 Dock 자동 숨김 설정을 복원합니다.
+
+## 메뉴 막대 설정
+
+| 설정                                     | 설명                                            |
+| -------------------------------------- | --------------------------------------------- |
+| Automatic Mode (Window Edge Detection) | 창 위치에 따라 Dock 자동 숨김을 자동으로 변경합니다.              |
+| Dock Auto Hide                         | Dock 자동 숨김을 수동으로 켜거나 끕니다.                     |
+| Show Dock for Windows Over Full Screen | 전체 화면 또는 확장된 창 위에서 Dock을 표시합니다.               |
+| Expand Windows into Dock Area          | 창을 Dock 영역까지 확장합니다.                           |
+| Dock Reveal Delay                      | Dock이 나타날 때까지의 지연 시간을 설정합니다.                  |
+| Edge Threshold                         | Dock 가장자리 감지 거리를 16 / 24 / 32 / 48 px로 설정합니다. |
+| Dock Icon                              | Dock 아이콘과 갱신 주기를 설정합니다.                       |
+
+## 권한
+
+| 권한                  | 사용 목적                       |
+| ------------------- | --------------------------- |
+| 접근성 (Accessibility) | 창 확장 기능에 사용합니다.             |
+| 자동화 (System Events) | Dock 자동 숨김 상태를 변경할 때 사용합니다. |
+| 위치                  | 온도 및 날씨 정보에 사용합니다.          |
+
+## 제한 사항
+
+* macOS 전체 화면 모드는 시스템에서 관리합니다.
+* 다른 모니터의 화면 가장자리로 마우스를 이동하면 Dock이 해당 모니터로 이동할 수 있습니다.
+* 일부 앱에서는 최대화된 창의 크기 변경이 제한될 수 있습니다.
+
+---
+
+## License
+
+No license file is currently included in this repository.
+
+---
 
 <a name="english"></a>
 
@@ -151,75 +223,3 @@ swift build -c release
 * 一部のアプリケーションでは最大化されたウインドウのサイズ変更が制限される場合があります。
 
 [⬆ 言語選択に戻る](#better-dock-auto-hide)
-
----
-
-<a name="한국어"></a>
-
-# 한국어
-
-[English](#english) · [日本語](#日本語) · [한국어](#한국어)
-
-**Better Dock Auto Hide**는 창의 위치를 감지하여 **macOS Dock을 자동으로 숨기거나 표시하는 가벼운 Swift 메뉴 막대 앱**입니다.
-
-Dock 가장자리 근처의 창을 감지하여 창의 위치에 따라 macOS의 Dock 자동 숨김 상태를 자동으로 변경합니다.
-
-**macOS 13.0 이상을 지원합니다.**
-
-## 주요 기능
-
-* 창 위치에 따른 Dock 자동 숨김
-* 다중 모니터 지원
-* Dock 가장자리 감지 거리 설정
-* Dock 표시 지연 시간 설정
-* 창을 숨겨진 Dock 영역까지 확장
-* macOS 메뉴 막대 앱
-* 온도 및 날씨 표시
-* 앱 종료 시 기존 Dock 자동 숨김 설정 복원
-
-## 빌드
-
-macOS에서 Swift Package Manager로 빌드할 수 있습니다.
-
-```sh
-swift build -c release
-```
-
-## 작동 방식
-
-* Dock이 있는 화면에서 창이 설정한 감지 거리만큼 Dock 쪽 가장자리에 가까워지면 Dock을 자동으로 숨깁니다.
-* 해당 화면의 모든 창이 가장자리에서 멀어지면 앱 실행 전에 사용하던 Dock 자동 숨김 상태로 돌아갑니다.
-* 다른 모니터의 창을 사용하더라도 필요 이상으로 Dock 상태를 변경하지 않습니다.
-* 앱을 종료하면 앱 실행 전의 Dock 자동 숨김 설정을 복원합니다.
-
-## 메뉴 막대 설정
-
-| 설정                                     | 설명                                            |
-| -------------------------------------- | --------------------------------------------- |
-| Automatic Mode (Window Edge Detection) | 창 위치에 따라 Dock 자동 숨김을 자동으로 변경합니다.              |
-| Dock Auto Hide                         | Dock 자동 숨김을 수동으로 켜거나 끕니다.                     |
-| Show Dock for Windows Over Full Screen | 전체 화면 또는 확장된 창 위에서 Dock을 표시합니다.               |
-| Expand Windows into Dock Area          | 창을 Dock 영역까지 확장합니다.                           |
-| Dock Reveal Delay                      | Dock이 나타날 때까지의 지연 시간을 설정합니다.                  |
-| Edge Threshold                         | Dock 가장자리 감지 거리를 16 / 24 / 32 / 48 px로 설정합니다. |
-| Dock Icon                              | Dock 아이콘과 갱신 주기를 설정합니다.                       |
-
-## 권한
-
-| 권한                  | 사용 목적                       |
-| ------------------- | --------------------------- |
-| 접근성 (Accessibility) | 창 확장 기능에 사용합니다.             |
-| 자동화 (System Events) | Dock 자동 숨김 상태를 변경할 때 사용합니다. |
-| 위치                  | 온도 및 날씨 정보에 사용합니다.          |
-
-## 제한 사항
-
-* macOS 전체 화면 모드는 시스템에서 관리합니다.
-* 다른 모니터의 화면 가장자리로 마우스를 이동하면 Dock이 해당 모니터로 이동할 수 있습니다.
-* 일부 앱에서는 최대화된 창의 크기 변경이 제한될 수 있습니다.
-
----
-
-## License
-
-No license file is currently included in this repository.
