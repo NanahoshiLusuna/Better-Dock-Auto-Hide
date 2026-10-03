@@ -6,9 +6,9 @@
 
 ## English
 
-A lightweight **macOS menu bar utility** that automatically hides and shows the **macOS Dock** based on window position.
+A lightweight **Swift macOS menu bar utility** that automatically hides and shows the **macOS Dock** based on window position.
 
-Better Dock Auto Hide monitors windows near the Dock edge and automatically changes the system Dock's auto-hide state. It supports **multi-monitor setups**, configurable edge detection, Dock reveal delay, and optional window expansion into the Dock area.
+Better Dock Auto Hide monitors windows near the Dock edge and changes the system Dock auto-hide state. It supports **multi-monitor setups**, configurable edge detection, Dock reveal delay, and optional window expansion into the Dock area.
 
 **Requires macOS 13.0 or later.**
 
@@ -22,6 +22,18 @@ Better Dock Auto Hide monitors windows near the Dock edge and automatically chan
 * macOS menu bar app
 * Optional temperature and weather display
 * Restores the original Dock auto-hide setting when the app exits
+
+### Build
+
+This repository is a Swift Package Manager executable.
+
+Build from source on macOS:
+
+```sh
+swift build -c release
+```
+
+The repository also includes a built `DockAutoHide.app` bundle and `DockAutoHide.zip` distribution archive.
 
 ### How It Works
 
@@ -80,7 +92,7 @@ If location permission is unavailable, the app can use the last known location o
 
 [English](#english) · [日本語](#日本語) · [한국어](#한국어)
 
-**Better Dock Auto Hide** は、ウインドウの位置に応じて **macOS の Dock を自動的に表示・非表示にするメニューバーアプリ**です。
+**Better Dock Auto Hide** は、ウインドウの位置に応じて **macOS の Dock を自動的に表示・非表示にする軽量なSwiftメニューバーアプリ**です。
 
 Dock の端付近にあるウインドウを監視し、ウインドウの位置に応じて macOS の Dock の自動表示／非表示を切り替えます。
 
@@ -96,6 +108,14 @@ Dock の端付近にあるウインドウを監視し、ウインドウの位置
 * macOS メニューバーアプリ
 * 温度・天気情報の表示
 * アプリ終了時に元の Dock 自動非表示設定を復元
+
+## ビルド
+
+macOS で Swift Package Manager を使用してビルドできます。
+
+```sh
+swift build -c release
+```
 
 ## 動作の仕組み
 
@@ -140,7 +160,7 @@ Dock の端付近にあるウインドウを監視し、ウインドウの位置
 
 [English](#english) · [日本語](#日本語) · [한국어](#한국어)
 
-**Better Dock Auto Hide**는 창의 위치를 감지하여 **macOS Dock을 자동으로 숨기거나 표시하는 메뉴 막대 앱**입니다.
+**Better Dock Auto Hide**는 창의 위치를 감지하여 **macOS Dock을 자동으로 숨기거나 표시하는 가벼운 Swift 메뉴 막대 앱**입니다.
 
 Dock 가장자리 근처의 창을 감지하여 창의 위치에 따라 macOS의 Dock 자동 숨김 상태를 자동으로 변경합니다.
 
@@ -156,6 +176,14 @@ Dock 가장자리 근처의 창을 감지하여 창의 위치에 따라 macOS의
 * macOS 메뉴 막대 앱
 * 온도 및 날씨 표시
 * 앱 종료 시 기존 Dock 자동 숨김 설정 복원
+
+## 빌드
+
+macOS에서 Swift Package Manager로 빌드할 수 있습니다.
+
+```sh
+swift build -c release
+```
 
 ## 작동 방식
 
@@ -190,4 +218,8 @@ Dock 가장자리 근처의 창을 감지하여 창의 위치에 따라 macOS의
 * 다른 모니터의 화면 가장자리로 마우스를 이동하면 Dock이 해당 모니터로 이동할 수 있습니다.
 * 일부 앱에서는 최대화된 창의 크기 변경이 제한될 수 있습니다.
 
-[⬆ 언어 선택으로 돌아가기](#better-dock-auto-hide)
+---
+
+## License
+
+No license file is currently included in this repository.
